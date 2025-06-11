@@ -1,0 +1,160 @@
+
+Step 3 - Adding Additional Tables
+12
+<p style="margin:0in;margin-left:.375in;font-family:-apple-system;font-size:
+13.5pt;color:#2B373E"><br></p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ </ul><p style="margin-top: 0px; margin-bottom: 0px; vertical-align: middle;"><span style="font-weight:bold;font-family:Calibri;font-size:13.0pt">Refresh Date
+     Table</span></p><ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+</ul>
+
+<p style="margin:0in;margin-left:.375in;font-family:Calibri;font-size:13.5pt;
+color:#2B373E">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Open Power
+     Query Editor</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">On the Power BI Desktop
+      ribbon, click on </span><span style="font-weight:bold;font-family:Calibri;
+      font-size:11.0pt">Transform data</span><span style="font-family:Calibri;
+      font-size:11.0pt">.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Create a New
+     Blank Query</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Click on the </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">New Source</span><span style="font-family:Calibri;font-size:11.0pt"> button.</span></li>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Select </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Blank Query</span><span style="font-family:Calibri;font-size:11.0pt"> from the list.</span></li>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Click on </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Connect</span><span style="font-family:Calibri;font-size:11.0pt">.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Rename the
+     Query</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Under the </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Properties</span><span style="font-family:Calibri;font-size:11.0pt"> pane, in the </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Name</span><span style="font-family:Calibri;font-size:11.0pt"> box, type 'Refresh Date'.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Enter DAX
+     Formula</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">In the DAX formula bar, type
+      the following:<br>
+            = DateTime.LocalNow()</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Convert to
+     Table</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Click on the </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Convert to
+      Table</span><span style="font-family:Calibri;font-size:11.0pt"> button.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Rename the
+     Column</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">When the Refresh Table pops
+      up, right-click on the column header.</span></li>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Choose </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Rename</span><span style="font-family:Calibri;font-size:11.0pt"> from the context menu.</span></li>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Enter the desired column
+      name that is "Date time".</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Close and
+     Apply</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Click on </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Close &amp;
+      Apply</span><span style="font-family:Calibri;font-size:11.0pt">.</span></li>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Save your work.</span></li></ul></ul><p style="margin: 0in 0in 0in 1.125in; font-family: Calibri; font-size: 11pt;">&nbsp;</p><p style="margin: 0in 0in 0in 0.375in; font-family: Calibri; font-size: 13pt;"><span style="font-weight: bold;">Calendar Table</span></p>
+
+<p style="margin:0in;margin-left:.375in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Open Power
+     BI Desktop</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Ensure that you have your
+      Power BI Desktop open with the data model that contains the
+      Patient_Dataset.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Open the DAX
+     Formula Bar</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">In the </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Modeling</span><span style="font-family:Calibri;font-size:11.0pt"> tab, click on </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">New Table</span><span style="font-family:Calibri;font-size:11.0pt">.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Enter the
+     Calendar DAX Formula</span><span style="font-family:Calibri;font-size:
+     11.0pt">:</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">In
+the formula bar that appears, enter the following DAX formula:</p>
+
+<p style="margin: 0in 0in 0in 1.125in; font-family: Consolas; font-size: 9pt;">Calendar = </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt"><span style="color:#3165BB">ADDCOLUMNS</span>(</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#3165BB">CALENDAR</span> (</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color:#3165BB">Date</span>(<span style="color:#3165BB">Year</span>(<span style="color:#3165BB">Min</span>('Hospital ER'[date])), <span style="color:#3165BB">Month</span>(<span style="color:#3165BB">Min</span>('Hospital ER'[date])), <span style="color:#3165BB">DAY</span>(<span style="color:#3165BB">Min</span>('Hospital ER'[date]))),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color:#3165BB">Date</span>(<span style="color:#3165BB">Year</span>(<span style="color:#3165BB">Max</span>('Hospital ER'[date])), <span style="color:#3165BB">Month</span>(<span style="color:#3165BB">Max</span>('Hospital ER'[date])), <span style="color:#3165BB">DAY</span>(<span style="color:#3165BB">Max</span>('Hospital ER'[date])))),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Month"</span>, <span style="color:#3165BB">FORMAT</span>([date], <span style="color:#A31515">"mmm"</span>),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Weektype"</span>, <span style="color:#3165BB">IF</span>(<span style="color:#3165BB">WEEKDAY</span>([Date]) = <span style="color:#098658">1</span> || <span style="color:#3165BB">WEEKDAY</span>([Date]) = <span style="color:#098658">7</span>, <span style="color:#A31515">"Weekend"</span>, <span style="color:#A31515">"Weekday"</span>),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Weekday"</span>, <span style="color:#3165BB">FORMAT</span>([Date], <span style="color:#A31515">"ddd"</span>),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"MonthNum"</span>, <span style="color:#3165BB">MONTH</span>([Date]),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Month
+number"</span>, <span style="color:#3165BB">FORMAT</span> ( [Date], <span style="color:#A31515">"MM"</span> ),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Month
+Year"</span>, <span style="color:#3165BB">FORMAT</span> ( [Date], <span style="color:#A31515">"MMMYYYY"</span> ),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Week
+Number"</span>, <span style="color:#A31515">"Week-"</span> &amp; <span style="color:#3165BB">WEEKNUM</span>([Date]),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Week"</span>, <span style="color:#3165BB">WEEKNUM</span>([Date]),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Day
+Of Month"</span>, <span style="color:
+#3165BB">MONTH</span>([Date]) &amp; <span style="color:#A31515">"-"</span> &amp; <span style="color:#3165BB">FORMAT</span>([Date], <span style="color:#A31515">"dd"</span>),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Year
+Quarter"</span>, <span style="color:#3165BB">FORMAT</span>([Date], <span style="color:#A31515">"YYYY"</span>) &amp; <span style="color:#A31515">"/Q"</span> &amp; <span style="color:#3165BB">FORMAT</span>([Date], <span style="color:#A31515">"Q"</span>),</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#A31515">"Year"</span>, <span style="color:#3165BB">FORMAT</span>([Date], <span style="color:#A31515">"YYYY"</span>)</p>
+
+<p style="margin: 0in 0in 0in 1.125in; font-family: Consolas; font-size: 9pt;">)</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">Validate
+and Complete the Formula:</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">Ensure
+that there are no syntax errors in the formula.</p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">Press
+<span style="font-weight:bold">Enter</span> to create the new table.</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Save Your
+     Work</span><span style="font-family:Calibri;font-size:11.0pt">:</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">Once
+the calendar table is created successfully, save your Power BI file.</p><p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt"><br></p><p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1591/14/1.gif" style="width: 100%;"><br></p>
+
+<p><a href="https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables" target="_blank">Design guidance for date tables in Power BI Desktop</a><br></p>
+
