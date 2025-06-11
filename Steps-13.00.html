@@ -1,0 +1,312 @@
+
+Step 4 - Adding Measures
+13
+<br>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Open Power BI Desktop and
+     navigate to the </span><span style="font-weight:bold;font-family:Calibri;
+     font-size:11.0pt">Fields pane</span><span style="font-family:Calibri;
+     font-size:11.0pt">.</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Right-click on the table
+     where you want to create the measure and select </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">New Measure</span><span style="font-family:Calibri;font-size:11.0pt">.</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Enter the DAX formula in the
+     formula bar and press </span><span style="font-weight:bold;font-family:
+     Calibri;font-size:11.0pt">Enter</span><span style="font-family:Calibri;
+     font-size:11.0pt"> to save the measure.</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.375in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Total Visit =
+     COUNTROWS('Patient_Dateset')</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Visit WOW% = <br>
+          VAR _currentWeekVisit = [Total Visit]<br>
+          VAR _PreviousWeekVisit = <br>
+          &nbsp;&nbsp;&nbsp; CALCULATE([Total Visit],
+     DATEADD('Calander'[Date], -7, DAY))<br>
+          RETURN<br>
+          &nbsp;&nbsp;&nbsp; DIVIDE(_currentWeekVisit -
+     _PreviousWeekVisit, _PreviousWeekVisit)</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<p style="margin:0in;margin-left:.75in;line-height:13pt;font-family:Calibri;
+font-size:11.0pt">&nbsp;</p>
+
+<p style="margin: 0in 0in 0in 0.75in; font-family: Consolas; font-size: 9pt;">Visit WOW% Color = </p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; <span style="color:#3165BB">IF</span>('Calculations'[Visit WOW%] &gt; <span style="color:#098658">0</span>, <span style="color:#A31515">"#0A833C"</span>, </p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Consolas;font-size:9.0pt">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color:#3165BB">IF</span>('Calculations'[Visit WOW%] &lt; <span style="color:#098658">0</span>, <span style="color:#A31515">"#A1343C"</span>, <span style="color:#A31515">"#000000"</span>)</p>
+
+<p style="margin: 0in 0in 0in 0.75in; font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; )</p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Visit WOW% Sign = <br>
+          SWITCH(<br>
+          &nbsp;&nbsp;&nbsp; TRUE(),<br>
+          &nbsp;&nbsp;&nbsp; 'Calculations'[Visit WOW%]
+     &gt; 0, UNICHAR(9650),<br>
+          &nbsp;&nbsp;&nbsp; 'Calculations'[Visit WOW%]
+     &lt; 0, UNICHAR(9660),<br>
+          &nbsp;&nbsp;&nbsp; UNICHAR(9644)<br>
+          )</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.375in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">% Referred Patients = <br>
+          VAR _FilterPatients = <br>
+          &nbsp;&nbsp;&nbsp; CALCULATE([Total Visit],
+     'Patient_Dateset'[department_referral] &lt;&gt; "None")<br>
+          RETURN<br>
+          &nbsp;&nbsp;&nbsp; DIVIDE(_FilterPatients,
+     [Total Visit])</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Average Satisfaction score =
+     <br>
+          CALCULATE(<br>
+          &nbsp;&nbsp;&nbsp;
+     AVERAGE('Patient_Dateset'[patient_sat_score]),<br>
+          &nbsp;&nbsp;&nbsp;
+     'Patient_Dateset'[patient_sat_score] &lt;&gt; BLANK()<br>
+          )</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Average Wait Time = <br>
+          AVERAGE('Patient_Dateset'[patient_waittime])</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Avg Satisfaction WOW% =
+     <br>
+          VAR _currentWeekVisit = 'Calculations'[Average Satisfaction
+     score]<br>
+          VAR _PreviousWeekVisit = <br>
+          &nbsp;&nbsp;&nbsp;
+     CALCULATE('Calculations'[Average Satisfaction score], DATEADD('Calander'[Date],
+     -7, DAY))<br>
+          RETURN<br>
+          &nbsp;&nbsp;&nbsp; DIVIDE(_currentWeekVisit -
+     _PreviousWeekVisit, _PreviousWeekVisit)</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Avg WaitingTime WOW% = <br>
+          VAR _currentWeekVisit = 'Calculations'[Average Wait Time]<br>
+          VAR _PreviousWeekVisit = <br>
+          &nbsp;&nbsp;&nbsp;
+     CALCULATE('Calculations'[Average Wait Time],
+     DATEADD('Calander'[Date], -7, DAY))<br>
+          RETURN<br>
+          &nbsp;&nbsp;&nbsp; DIVIDE(_currentWeekVisit -
+     _PreviousWeekVisit, _PreviousWeekVisit)</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Avg SatisfactionScore WOW%
+     Color =</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">IF('Calculations'[Avg
+Satisfaction WOW%] &gt; 0, "#0A833C",</p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;&nbsp;&nbsp; IF('Calculations'[Avg Satisfaction WOW%]
+&lt; 0, "#A1343C", "#000000")</p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">)</p>
+
+<p style="margin:0in;margin-left:.375in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Avg. SatisfactionScore WOW%
+     Sign = <br>
+          SWITCH(<br>
+          &nbsp;&nbsp;&nbsp; TRUE(),<br>
+          &nbsp;&nbsp;&nbsp; 'Calculations'[Avg
+     Satisfaction WOW%] &gt; 0, UNICHAR(9650),<br>
+          &nbsp;&nbsp;&nbsp; 'Calculations'[Avg
+     Satisfaction WOW%] &lt; 0, UNICHAR(9660),<br>
+          &nbsp;&nbsp;&nbsp; UNICHAR(9644)<br>
+          )</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Avg WaitingTime WOW% Color =</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">IF('Calculations'[Avg
+WaitingTime WOW%] &gt; 0, "#fa8264",</p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;&nbsp;&nbsp; IF('Calculations'[Avg WaitingTime WOW%]
+&lt; 0, "#1c9407", "#000000")</p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">)</p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Avg. WaitingTime WOW% Sign =
+     <br>
+          SWITCH(<br>
+          &nbsp;&nbsp;&nbsp; TRUE(),<br>
+          &nbsp;&nbsp;&nbsp; 'Calculations'[Avg
+     WaitingTime WOW%] &gt; 0, UNICHAR(9650),<br>
+          &nbsp;&nbsp;&nbsp; 'Calculations'[Avg
+     WaitingTime WOW%] &lt; 0, UNICHAR(9660),<br>
+          &nbsp;&nbsp;&nbsp; UNICHAR(9644)<br>
+          )</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Hitmap Caption = <br>
+          VAR _SelectedMeasure = SELECTEDVALUE(Parameter[Parameter
+     Order])<br>
+          RETURN<br>
+          IF(_SelectedMeasure = 1,<br>
+          &nbsp;&nbsp;&nbsp; "The darker on the
+     scale denotes LOW waiting time on the Age group",<br>
+          &nbsp;&nbsp;&nbsp; "Patients are most
+     SATISFIED when the scale shows darker on the Age-group"<br>
+          )</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">ref_WOW% = <br>
+          VAR _currentWeekVisit = 'Calculations'[% Referred Patients]<br>
+          VAR _PreviousWeekVisit = <br>
+          &nbsp;&nbsp;&nbsp; CALCULATE('Calculations'[%
+     Referred Patients], DATEADD('Calander'[Date], -7, DAY))<br>
+          RETURN<br>
+          &nbsp;&nbsp;&nbsp; DIVIDE(_currentWeekVisit -
+     _PreviousWeekVisit, _PreviousWeekVisit)</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Refer WOW% = <br>
+          VAR _currentWeekRefer = 'Calculations'[% Referred Patients]<br>
+          VAR _PreviousWeekRefer = <br>
+          &nbsp;&nbsp;&nbsp; CALCULATE('Calculations'[%
+     Referred Patients], DATEADD('Calander'[Date], -7, DAY))<br>
+          RETURN<br>
+          &nbsp;&nbsp;&nbsp; DIVIDE(_currentWeekRefer -
+     _PreviousWeekRefer, _PreviousWeekRefer)</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Refer WOW% Sign = <br>
+          SWITCH(<br>
+          &nbsp;&nbsp;&nbsp; TRUE(),<br>
+          &nbsp;&nbsp;&nbsp; 'Calculations'[Refer WOW%]
+     &gt; 0, UNICHAR(9650),<br>
+          &nbsp;&nbsp;&nbsp; 'Calculations'[Refer WOW%]
+     &lt; 0, UNICHAR(9660),<br>
+          &nbsp;&nbsp;&nbsp; UNICHAR(9644)<br>
+          )</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Satisfaction Rate = <br>
+          VAR SatisfiedResponses = <br>
+          &nbsp;&nbsp;&nbsp; CALCULATE(<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     COUNTROWS('Patient_Dateset'),<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     'Patient_Dateset'[patient_sat_score] &gt;= 5 &amp;&amp;
+     'Patient_Dateset'[patient_sat_score] &lt;&gt; BLANK()<br>
+          &nbsp;&nbsp;&nbsp; )<br>
+          VAR TotalResponses = <br>
+          &nbsp;&nbsp;&nbsp; CALCULATE(<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     COUNTROWS('Patient_Dateset'),<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     'Patient_Dateset'[patient_sat_score] &lt;&gt; BLANK()<br>
+          &nbsp;&nbsp;&nbsp; )<br>
+          RETURN<br>
+          &nbsp;&nbsp;&nbsp; IF(ISBLANK(TotalResponses),
+     0, DIVIDE(SatisfiedResponses, TotalResponses))</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<p style="margin:0in;margin-left:.75in;font-family:Calibri;font-size:11.0pt"><span style="font-weight:bold">Formats:</span></p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">% Referred
+     Patients</span><span style="font-family:Calibri;font-size:11.0pt"> =
+     Percentage, Decimals = 2</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Average
+     Satisfaction Score</span><span style="font-family:Calibri;font-size:11.0pt">
+     = Decimal Number, Decimals = 2</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Average Wait
+     Time</span><span style="font-family:Calibri;font-size:11.0pt"> = Decimal
+     Number, Decimals = 2</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Avg
+     Satisfaction WOW%</span><span style="font-family:Calibri;font-size:11.0pt">
+     = Percentage, Decimals = 2</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Avg
+     WaitingTime WOW%</span><span style="font-family:Calibri;font-size:11.0pt">
+     = Percentage, Decimals = 2</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Avg.
+     SatisfactionScore WOW% Color</span><span style="font-family:Calibri;
+     font-size:11.0pt"> = Text</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Avg.
+     SatisfactionScore WOW% Sign</span><span style="font-family:Calibri;
+     font-size:11.0pt"> = Text</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Avg.
+     WaitingTime WOW% Color</span><span style="font-family:Calibri;font-size:
+     11.0pt"> = Text</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Avg.
+     WaitingTime WOW% Sign</span><span style="font-family:Calibri;font-size:
+     11.0pt"> = Text</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Hitmap
+     Caption</span><span style="font-family:Calibri;font-size:11.0pt"> = Text</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">ref_WOW%</span><span style="font-family:Calibri;font-size:11.0pt"> = Percentage, Decimals = 2</span></li></ul><p style="margin-top: 0px; margin-bottom: 0px; vertical-align: middle;"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1591/15/1.jpg"><span style="font-family:Calibri;font-size:11.0pt"><br></span></p><p style="margin-top: 0px; margin-bottom: 0px; vertical-align: middle;"><span style="font-family:Calibri;font-size:11.0pt"><br></span></p><p style="margin-top: 0px; margin-bottom: 0px; vertical-align: middle;"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1591/15/1.gif" style="width: 100%;"><span style="font-family:Calibri;font-size:11.0pt"><br></span></p><ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+</ul>
+
+<p><a href="https://www.researchgate.net/publication/390456116_Unleashing_Power_BI_for_Crafting_Dynamic_Dashboards" target="_blank">Unleashing Power BI for Crafting Dynamic Dashboards</a><br></p>
+
