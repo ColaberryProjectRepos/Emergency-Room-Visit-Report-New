@@ -1,0 +1,120 @@
+
+Step 2 - Data Transformation
+11
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Open Power
+     Query Editor:</span><span style="font-family:Calibri;font-size:11.0pt"> In
+     Power BI, go to the Home tab and click on Transform data. This will open
+     the Power Query Editor.</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Add a Custom
+     Column:</span></li>
+ <ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">In the Power Query Editor,
+      click on Add Column in the top menu and then select Custom Column.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Create the
+     "Age Group" column:</span></li>
+ <ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">In the dialog that appears,
+      enter a name for your new column (e.g., Age Group).</span></li>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Use the following logic for
+      the custom column formula:</span></li>
+ </ul>
+</ul>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">=
+if [patient_age] &lt;= 2 then "Infancy" </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">&nbsp; else if [patient_age] &lt;= 6 then
+"Early Childhood" </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">&nbsp; else if [patient_age] &lt;= 12 then
+"Middle Childhood" </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">&nbsp; else if [patient_age] &lt;= 18 then
+"Teenager" </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">&nbsp; else "Adults"</p>
+
+<p style="margin:0in;margin-left:.375in;font-family:Calibri;font-size:11.0pt"><span style="font-weight:bold">Create the "Age Range" column:</span></p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">In the dialog that appears,
+     enter a name for your new column (e.g., Age Range).</span></li>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Use the following logic for
+     the custom column formula:</span></li>
+</ul>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">=
+if [patient_age] &lt;= 10 then "0-10"<br>
+&nbsp; else if [patient_age] &lt;= 20 then
+"11-20"<br>
+&nbsp; else if [patient_age] &lt;= 30 then
+"21-30"<br>
+&nbsp; else if [patient_age] &lt;= 40 then
+"31-40"<br>
+&nbsp; else if [patient_age] &lt;= 50 then
+"41-50"<br>
+&nbsp; else if [patient_age] &lt;= 60 then
+"51-60"<br>
+&nbsp; else if [patient_age] &lt;= 70 then
+"61-70"<br>
+&nbsp; else "70+"</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Create the
+     "WaitTimeGroup" column:</span></li>
+ <ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Similarly, add a new custom
+      column and use the following logic to categorize patient wait times:</span></li>
+ </ul>
+</ul>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">=
+if [patient_waittime] &lt;= 15 then "0-15" </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">&nbsp; else if [patient_waittime] &lt;= 30 then
+"16-30" </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">&nbsp; else if [patient_waittime] &lt;= 45 then
+"31-45" </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">&nbsp; else if [patient_waittime] &lt;= 55 then
+"46-55" </p>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">&nbsp; else "55+"</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Create the
+     "patient_admin_binary" column:</span></li>
+ <ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Similarly, add a new custom
+      column and use the following logic to replace TRUE with 1 and FALSE with
+      0:</span></li>
+ </ul>
+</ul>
+
+<p style="margin:0in;margin-left:1.125in;font-family:Calibri;font-size:11.0pt">=
+if [patient_admin_flag] = true then 1 else 0</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Handle null
+     values:</span><span style="font-family:Calibri;font-size:11.0pt"> Instead
+     of removing null values, we recognize that they represent missing ratings.
+     Replace these null values with 0 to maintain data integrity.</span></li></ul><p style="margin-top: 0px; margin-bottom: 0px; vertical-align: middle;"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1591/13/1.gif" style="width: 100%;"><span style="font-family:Calibri;font-size:11.0pt"><br></span></p><ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+</ul>
+
+<p style="margin:0in;margin-left:.375in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<p><a href="https://learn.microsoft.com/en-us/power-bi/create-reports/service-from-excel-to-stunning-report" target="_blank">From Excel Workbook to a Power BI Report.</a><br></p>
+
