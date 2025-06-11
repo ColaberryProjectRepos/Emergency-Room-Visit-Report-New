@@ -1,0 +1,102 @@
+
+Step 12 - Waterfall Chart
+20
+<p style="margin:0in;font-family:-apple-system;font-size:13.5pt;color:#2B373E"><br></p>
+
+<p style="margin:0in;font-family:Calibri;font-size:11.0pt">&nbsp;</p>
+
+<p style="margin:0in;margin-left:.375in"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1591/22/1.jpg"></p>
+
+<p style="margin:0in;font-family:Calibri;font-size:16.0pt">&nbsp;</p>
+
+<ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in">
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Insert a
+     Waterfall Chart:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">From the Visualizations
+      pane, select </span><span style="font-weight:bold;font-family:Calibri;
+      font-size:11.0pt">Waterfall Chart</span><span style="font-family:Calibri;
+      font-size:11.0pt">.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Create the
+     Breakdown Table:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Use the following DAX to
+      create the Breakdown table:<br>
+            Breakdown = DATATABLE(<br>
+            &nbsp;&nbsp; "KPI",
+      STRING,<br>
+            &nbsp;&nbsp; "KPISort",
+      INTEGER,<br>
+            &nbsp;&nbsp; { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {"Visit %",
+      1},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {"Sat %",
+      2},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {"Wait_time", 3},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {"Referred
+      %", 4}<br>
+            &nbsp;&nbsp; }<br>
+            )</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Create the
+     WoW Variance Measure:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Use the following DAX to
+      create the </span><span style="font-weight:bold;font-family:Calibri;
+      font-size:11.0pt">WaterFall_measures</span><span style="font-family:Calibri;
+      font-size:11.0pt"> measure:<br>
+            WaterFall_measures = <br>
+            VAR visit_wow = 'Calculations'[Visit WOW%]<br>
+            VAR refered_pat = 'Calculations'[Refer WOW%]<br>
+            VAR wait_time = 'Calculations'[Avg WaitingTime WOW%]<br>
+            VAR sat_score = 'Calculations'[Avg Satisfaction WOW%]<br>
+            RETURN<br>
+            SWITCH(<br>
+            &nbsp;&nbsp;&nbsp;
+      SELECTEDVALUE(Breakdown[KPISort]),<br>
+            &nbsp;&nbsp;&nbsp; 1, visit_wow,<br>
+            &nbsp;&nbsp;&nbsp; 2, sat_score,<br>
+            &nbsp;&nbsp;&nbsp; 3, wait_time,<br>
+            &nbsp;&nbsp;&nbsp; 4, refered_pat<br>
+            )</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Set Up Axis
+     and Values:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Drag </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">KPI</span><span style="font-family:Calibri;font-size:11.0pt"> (from the Breakdown table)
+      to the </span><span style="font-weight:bold;font-family:Calibri;
+      font-size:11.0pt">Category</span><span style="font-family:Calibri;
+      font-size:11.0pt"> axis.</span></li>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Drag </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">WaterFall_measures</span><span style="font-family:Calibri;font-size:11.0pt"> to the </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Y-Axis
+      (Values)</span><span style="font-family:Calibri;font-size:11.0pt"> area.</span></li>
+ </ul>
+ <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Title and
+     Formatting:</span></li>
+ <ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Set the chart title to </span><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">"WoW
+      Variance."</span></li>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">Adjust colors in the Format
+      pane:</span></li>
+  <ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+   margin-bottom:0in">
+   <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Increase</span><span style="font-family:Calibri;font-size:11.0pt">: #529062</span></li>
+   <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Decrease</span><span style="font-family:Calibri;font-size:11.0pt">: #CA505C</span></li>
+   <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-weight:bold;font-family:Calibri;font-size:11.0pt">Total</span><span style="font-family:Calibri;font-size:11.0pt">: #466A6B</span></li>
+  </ul>
+  <li style="margin-top:0;margin-bottom:0;vertical-align:middle"><span style="font-family:Calibri;font-size:11.0pt">All other formatting details
+      will be shown in the GIF below.</span></li></ul></ul><p style="margin-top: 0px; margin-bottom: 0px; vertical-align: middle;"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1591/22/2.gif" style="width: 100%;"><span style="font-family:Calibri;font-size:11.0pt"><br></span></p><ul type="disc" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+ margin-bottom:0in"><ul type="circle" style="direction:ltr;unicode-bidi:embed;margin-top:0in;
+  margin-bottom:0in">
+ </ul>
+</ul>
+
+<p><a href="https://medium.com/@rganesh0203/power-bi-different-ways-to-create-kpi-with-examples-0a639c5be4be" target="_blank">Different Ways to Create KPI with Examples</a><br></p>
+
